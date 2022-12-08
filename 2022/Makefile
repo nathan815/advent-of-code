@@ -4,7 +4,7 @@ build:
 	docker build -t advent-of-code-2022 .
 
 run:
-	docker run -it advent-of-code-2022 python $(file)
+	docker run -it -v $(shell pwd):/aoc advent-of-code-2022 python $(file)
 
 test:
-	docker run -it advent-of-code-2022 pytest
+	docker run -it -v $(shell pwd):/aoc advent-of-code-2022 pytest
