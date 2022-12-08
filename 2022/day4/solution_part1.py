@@ -46,7 +46,7 @@ def run(file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
-    print('Day 4, Part 1 - Count overlapping compartment assignment pairs')
+    print('Day 4, Part 1 - Count compartment assignment pairs where one fully contains the other')
     pairs = parse_lines_to_range_pairs(lines)
     result = count_fully_overlapping_compartment_assignment_pairs(pairs)
     print(result)
