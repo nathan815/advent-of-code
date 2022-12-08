@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 from typing import List, Tuple
 
@@ -34,11 +35,11 @@ def parse_lines_to_range_pairs(lines: list[str]) -> List[Tuple[IntRange, IntRang
     return pairs
 
 
-def run(file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'):
+def run_day4_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
-    print('Day 4, Part 2 - Count overlapping compartment assignment pairs')
+    print('Day 4 Part 2 - Count overlapping compartment assignment pairs')
     pairs = parse_lines_to_range_pairs(lines)
     result = count_overlapping_compartment_assignment_pairs(pairs)
     print(result)
@@ -71,10 +72,10 @@ def tests():
     ])
     assert result == 2, result
 
-    sample = run('sample_input.txt')
+    sample = run_day4_part2('sample_input.txt')
     assert sample == 4, sample
 
 
 if __name__ == "__main__":
     tests()
-    run()
+    run_day4_part2()

@@ -1,3 +1,7 @@
+from pathlib import Path
+import sys
+
+
 def part1_find_most_elf_calories(lines):
     max_elf_calories = 0
     current_elf_calories = 0
@@ -35,15 +39,19 @@ def part2_find_top_3_elf_calories_sum(lines):
 
     total = 0
     for cals in all_elf_calories[0:3]:
-        print('adding', cals)
+        # print('adding', cals)
         total += cals
     return total
 
 
-with open('input.txt', 'r') as fp:
-    lines = fp.readlines()
-    print('Part 1 - Calories Carried by Top Elf')
-    print(part1_find_most_elf_calories(lines))
+def run_day1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+    with open(file) as fp:
+        lines = fp.readlines()
+        print('Day 1 Part 1 - Calories Carried by Top Elf')
+        print(part1_find_most_elf_calories(lines))
 
-    print('Part 2 - Sum of Calories Carried by Top 3 Elfs')
-    print(part2_find_top_3_elf_calories_sum(lines))
+        print('Day 1 Part 2 - Sum of Calories Carried by Top 3 Elfs')
+        print(part2_find_top_3_elf_calories_sum(lines))
+
+if __name__ == "__main__":
+    run_day1()

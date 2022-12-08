@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 
 ROCK = 'rock'
@@ -69,12 +70,16 @@ def calculate_rock_paper_scissors_total_score(lines):
     return score
 
 
-file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'
-with open(file, 'r') as fp:
-    lines = fp.readlines()
-    print('Part 2 - Calculate Total Score Given [OpponentMove, NeededOutcome]')
-    result = calculate_rock_paper_scissors_total_score(lines)
-    print(result)
+def run_day2_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+    with open(file, 'r') as fp:
+        lines = fp.readlines()
+        print('Day 2 Part 2 - Calculate Total Score Given [OpponentMove, NeededOutcome]')
+        result = calculate_rock_paper_scissors_total_score(lines)
+        print(result)
 
-    if len(sys.argv) >= 3:
-        assert result == int(sys.argv[2])
+        if len(sys.argv) >= 3:
+            assert result == int(sys.argv[2])
+
+
+if __name__ == "__main__":
+    run_day2_part2()

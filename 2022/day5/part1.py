@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 import sys
 import re
 from typing import Tuple
@@ -73,7 +74,7 @@ def parse_text_input(lines: list[str]) -> Tuple[CargoShip, list[CrateMove]]:
                 elif char == ']' or char == ' ':
                     continue
                 elif stack_num is not None:
-                    print('stack_num', stack_num)
+                    # print('stack_num', stack_num)
                     ship.add_crate_to_stack_from_bottom(stack_num, char)
         else:
             matches = move_line_regex.findall(line)
@@ -88,17 +89,18 @@ def parse_text_input(lines: list[str]) -> Tuple[CargoShip, list[CrateMove]]:
     return ship, moves
 
 
-def run_day5_part1(file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'):
+def run_day5_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
-    print('Day 5, Part 1 - Message from top of cargo ship stacks after rearrangements')
+    print('Day 5 Part 1 - Message from top of cargo ship stacks after rearrangements')
     ship, moves = parse_text_input(lines)
     ship.run_crate_moves(moves)
     result = ship.get_top_crates_message()
     print(result)
 
     return result
+
 
 if __name__ == "__main__":
     run_day5_part1()

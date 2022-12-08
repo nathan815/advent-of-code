@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 from typing import List, Tuple
 
@@ -24,7 +25,7 @@ def check_if_range_fully_contains(r1: IntRange, r2: IntRange):
 def count_fully_overlapping_compartment_assignment_pairs(pairs: List[Tuple[IntRange, IntRange]]) -> int:
     result = 0
     for range1, range2 in pairs:
-        print(range1, range2, check_if_range_fully_contains(range1, range2))
+        # print(range1, range2, check_if_range_fully_contains(range1, range2))
         if check_if_range_fully_contains(range1, range2):
             result += 1
     return result
@@ -42,11 +43,11 @@ def parse_lines_to_range_pairs(lines: list[str]) -> List[Tuple[IntRange, IntRang
     return pairs
 
 
-def run(file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'):
+def run_day4_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
-    print('Day 4, Part 1 - Count compartment assignment pairs where one fully contains the other')
+    print('Day 4 Part 1 - Count compartment assignment pairs where one fully contains the other')
     pairs = parse_lines_to_range_pairs(lines)
     result = count_fully_overlapping_compartment_assignment_pairs(pairs)
     print(result)
@@ -79,10 +80,10 @@ def tests():
     ])
     assert result == 1, result
 
-    sample = run('sample_input.txt')
+    sample = run_day4_part1('sample_input.txt')
     assert sample == 2, sample
 
 
 if __name__ == "__main__":
     tests()
-    run()
+    run_day4_part1()

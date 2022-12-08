@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 import math
 
@@ -50,12 +51,11 @@ def sum_duplicate_items_in_rucksack_compartments(lines: list[str]):
     return sum
 
 
-def run():
-    file = sys.argv[1] if len(sys.argv) >= 2 else 'input.txt'
+def run_day3_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.readlines()
 
-    print('Part 1 - Sum of priorities of items appearing in both rucksack compartments')
+    print('Day 3 Part 1 - Sum of priorities of items appearing in both rucksack compartments')
     result = sum_duplicate_items_in_rucksack_compartments(lines)
     print(result)
 
@@ -87,6 +87,6 @@ def tests():
     ]
     assert sum_duplicate_items_in_rucksack_compartments(sample_input) == 157
 
-
-tests()
-run()
+if __name__ == "__main__":
+    tests()
+    run_day3_part1()
