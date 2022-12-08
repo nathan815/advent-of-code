@@ -1,5 +1,5 @@
 from pathlib import Path
-from solution_part1 import run_day5_part1, parse_text_input, CargoShip, CrateMove
+from part1 import run_day5_part1, parse_text_input, CargoShip, CrateMove
 
 
 def test_CargoShip_add_crate_to_stack_from_bottom():
