@@ -7,6 +7,25 @@ https://adventofcode.com/
 
 ```
 cd 2022
-python3 -m venv venv
-pip install -r requirements.txt
+make build
+# or: docker build -t advent-of-code-2022 .
 ```
+
+## Run
+
+### Run all solutions
+
+`make run`
+
+or `docker run -it advent-of-code-2022`
+
+### Run specific solution
+
+`make run file=day5/part1.py`
+
+or `docker run -it advent-of-code-2022 python day5/part1.py`
+
+### Run unit tests
+`make test`
+
+or `docker run -it advent-of-code-2022 pytest`
