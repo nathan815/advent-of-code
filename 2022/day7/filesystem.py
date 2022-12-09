@@ -52,7 +52,7 @@ class Directory(Node):
     def get_subdirs(self) -> list['Directory']:
         subdirs = []
         for child in self.children:
-            if type(child) == Directory:
+            if isinstance(child, Directory):
                 subdirs.append(child)
                 for subdir in child.get_subdirs():
                     subdirs.append(subdir)
@@ -72,7 +72,7 @@ class FileSystem:
             self.current_dir = self.root
         else:
             found_dir = self.current_dir.find(dir)
-            if type(found_dir) == Directory:
+            if isinstance(found_dir, Directory):
                 self.current_dir = found_dir
             else:
                 raise ValueError(f"Directory {dir} not found in {self.current_dir.name}")
