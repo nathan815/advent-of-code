@@ -48,7 +48,7 @@ def run_day8_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).
     with open(file) as fp:
         lines = fp.read().splitlines()
 
-    print('Day 7 Part 1 - Max Tree Scenic Score')
+    print('Day 8 Part 2 - Max Tree Scenic Score')
     result = find_max_scenic_score(lines)
     print(result)
 

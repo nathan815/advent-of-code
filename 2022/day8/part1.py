@@ -40,7 +40,7 @@ def run_day8_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).
     with open(file) as fp:
         lines = fp.read().splitlines()
 
-    print('Day 7 Part 1 - Count Visible Trees in Grid')
+    print('Day 8 Part 1 - Count Visible Trees in Grid')
     result = count_visible_trees(lines)
     print(result)
 
