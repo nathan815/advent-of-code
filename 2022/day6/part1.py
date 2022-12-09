@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 
-def find_start_of_packet_market(buffer: str):
+def find_start_of_packet_marker(buffer: str):
     seen_chars = []
 
     for i, char in enumerate(buffer):
@@ -20,7 +20,7 @@ def run_day6_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).
 
     signal_buffer = lines[0]
 
-    result = find_start_of_packet_market(signal_buffer)
+    result = find_start_of_packet_marker(signal_buffer)
     print('Day 6 Part 1 - Find Start of First Packet Marker')
     print(result)
 
