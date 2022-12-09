@@ -51,7 +51,7 @@ def sum_duplicate_items_in_rucksack_compartments(lines: list[str]):
     return sum
 
 
-def run_day3_part1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+def run(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.readlines()
 
@@ -89,4 +89,4 @@ def tests():
 
 if __name__ == "__main__":
     tests()
-    run_day3_part1()
+    run()

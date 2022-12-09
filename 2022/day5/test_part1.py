@@ -1,5 +1,5 @@
 from pathlib import Path
-from day5.part1 import run_day5_part1, parse_text_input, CargoShip, CrateMove
+from day5.part1 import run, parse_text_input, CargoShip, CrateMove
 
 
 def test_CargoShip_add_crate_to_stack_from_bottom():
@@ -130,4 +130,4 @@ def test_parse_text_input():
 
 def test_run_with_sample_input():
     cur_dir = Path(__file__).parent
-    assert run_day5_part1(str(cur_dir / 'sample_input.txt')) == 'CMZ'
+    assert run(str(cur_dir / 'sample_input.txt')) == 'CMZ'

@@ -44,7 +44,7 @@ def part2_find_top_3_elf_calories_sum(lines):
     return total
 
 
-def run_day1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+def run(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file) as fp:
         lines = fp.readlines()
         print('Day 1 Part 1 - Calories Carried by Top Elf')
@@ -54,4 +54,4 @@ def run_day1(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent
         print(part2_find_top_3_elf_calories_sum(lines))
 
 if __name__ == "__main__":
-    run_day1()
+    run()

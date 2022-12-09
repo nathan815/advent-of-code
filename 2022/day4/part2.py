@@ -35,7 +35,7 @@ def parse_lines_to_range_pairs(lines: list[str]) -> List[Tuple[IntRange, IntRang
     return pairs
 
 
-def run_day4_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+def run(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
@@ -72,10 +72,10 @@ def tests():
     ])
     assert result == 2, result
 
-    sample = run_day4_part2('sample_input.txt')
+    sample = run('sample_input.txt')
     assert sample == 4, sample
 
 
 if __name__ == "__main__":
     tests()
-    run_day4_part2()
+    run()

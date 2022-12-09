@@ -15,7 +15,7 @@ def find_start_of_unique_message_marker(buffer: str, marker_length=14):
             return i + 1
 
 
-def run_day6_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
+def run(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).parent / 'input.txt'):
     with open(file, 'r') as fp:
         lines = fp.read().splitlines()
 
@@ -29,4 +29,4 @@ def run_day6_part2(file = sys.argv[1] if len(sys.argv) >= 2 else Path(__file__).
 
 
 if __name__ == "__main__":
-    run_day6_part2()
+    run()
