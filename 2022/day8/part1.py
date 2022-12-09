@@ -3,13 +3,13 @@ import sys
 
 
 def count_visible_trees(grid: list[list[str]]):
-    def check_row(idx: int, start: int, end: int):
+    def check_row(cell: int, idx: int, start: int, end: int):
         for i in range(start, end):
             if int(grid[idx][i]) >= cell:
                 return True
         return False
     
-    def check_col(idx: int, start: int, end: int):
+    def check_col(cell: int, idx: int, start: int, end: int):
         for i in range(start, end):
             if int(grid[i][idx]) >= cell:
                 return True
@@ -23,10 +23,10 @@ def count_visible_trees(grid: list[list[str]]):
         for col_idx in range(1, num_cols-1):
             cell = int(grid[row_idx][col_idx])
 
-            hidden_left = check_row(row_idx, 0, col_idx)
-            hidden_right = check_row(row_idx, col_idx+1, len(grid[row_idx]))
-            hidden_above = check_col(col_idx, 0, row_idx)
-            hidden_below = check_col(col_idx, row_idx+1, len(grid))
+            hidden_left = check_row(cell, row_idx, 0, col_idx)
+            hidden_right = check_row(cell, row_idx, col_idx+1, len(grid[row_idx]))
+            hidden_above = check_col(cell, col_idx, 0, row_idx)
+            hidden_below = check_col(cell, col_idx, row_idx+1, len(grid))
 
             is_hidden = hidden_left and hidden_right and hidden_above and hidden_below
 
