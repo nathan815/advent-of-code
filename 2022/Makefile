@@ -8,3 +8,6 @@ run:
 
 test:
 	docker run -it -v $(shell pwd):/aoc advent-of-code-2022 pytest
+
+bash:
+	docker run -it -v $(shell pwd):/aoc advent-of-code-2022 bash
