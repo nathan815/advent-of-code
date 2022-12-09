@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 
-from day7.common import FileSystem, File, Directory
+from day7.filesystem import FileSystem, File, Directory
 
 
 def find_smallest_directory_to_delete(

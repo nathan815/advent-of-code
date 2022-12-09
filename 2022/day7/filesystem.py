@@ -57,7 +57,7 @@ class Directory(Node):
                 for subdir in child.get_subdirs():
                     subdirs.append(subdir)
         return subdirs
-                
+
 
 class FileSystem:
     def __init__(self):

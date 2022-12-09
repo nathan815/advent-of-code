@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 
-from day7.common import FileSystem, File
+from day7.filesystem import FileSystem, File
 
 
 def sum_directories_less_than_size(filesystem: FileSystem, max_size=100_000):
