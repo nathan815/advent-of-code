@@ -36,7 +36,7 @@ class Directory(Node):
         for node in self.children:
             size += node.total_size()
         return size
-    
+
     def find(self, name: str):
         for node in self.children:
             if name == node.name:
@@ -58,29 +58,35 @@ class Directory(Node):
                     subdirs.append(subdir)
         return subdirs
 
+    def resolve(self, path: str):
+        parts = path.split('/')
+        cur = self
+        for part in parts:
+            if part:
+                cur = cur.find(part)
+                if not cur:
+                    raise ValueError(f"{part} not found in {self.path()}")
+        return cur
+
 
 class FileSystem:
     def __init__(self):
         self.root = Directory(name="", parent=None)
         self.current_dir = self.root
-    
-    def change_dir(self, dir: str):
-        if dir == '..':
+
+    def change_dir(self, name: str):
+        if name == '..':
             if self.current_dir.parent:
                 self.current_dir = self.current_dir.parent
-        elif dir == '/':
+        elif name == '/':
             self.current_dir = self.root
         else:
-            found_dir = self.current_dir.find(dir)
+            found_dir = self.current_dir.resolve(name)
             if isinstance(found_dir, Directory):
                 self.current_dir = found_dir
-            else:
-                raise ValueError(f"Directory {dir} not found in {self.current_dir.name}")
 
     def create_file(self, file: File):
         self.current_dir.add(file)
 
     def create_dir(self, name: str):
         self.current_dir.add(Directory(name=name))
-    
-
