@@ -16,7 +16,6 @@ Position = Tuple[int, int]
 
 
 def move_rope_head(direction: Direction, head: Position, tail: Position) -> Tuple[Position, Position]:
-    direction = Direction(direction)
     head_x, head_y = head
     tail_x, tail_y = tail
 
