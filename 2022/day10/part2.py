@@ -53,10 +53,11 @@ class CRT:
 class CpuInstruction:
     name = ""
 
-    def __init__(self) -> None:
+    def __init__(self, args) -> None:
+        self.args = args
         self.complete = False
 
-    def run(self, cpu: CPU, *args):
+    def run(self, cpu: CPU):
         pass
 
     @staticmethod
@@ -75,14 +76,15 @@ class NoOp(CpuInstruction):
 
 class AddX(CpuInstruction):
     name = "addx"
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, args) -> None:
+        super().__init__(args)
         self.cycles_ran = 0
 
-    def run(self, cpu: CPU, v: str):
+    def run(self, cpu: CPU):
         self.cycles_ran += 1
         if self.cycles_ran == 2:
-            cpu.x += int(v)
+            cpu.x += int(self.args[0])
+            # print("adding", v, "to x. New x =", cpu.x)
             self.complete = True
 
 
@@ -101,14 +103,14 @@ def execute_instructions(cpu_instructions: list[str], max_cycles=220) -> CRT:
             parts = cpu_instructions[0].split(" ")
             iname = parts[0]
             iargs = [] if len(parts) <= 1 else parts[1:]
-            instruction = CpuInstruction.from_name(iname)()
+            instruction = CpuInstruction.from_name(iname)(iargs)
             # print("begin", end=" ")
 
         crt.draw(cpu.x)
 
         if instruction is not None:
             # print("run", instruction.name, iargs, cpu)
-            instruction.run(cpu, *iargs)
+            instruction.run(cpu)
             if instruction.complete:
                 cpu_instructions.pop(0)
                 instruction = None
