@@ -36,7 +36,7 @@ def check_sides(left, right, idx=0, debug=True, level=0):
                 iprint('Check', leftitem, '<', rightitem, 'returning', leftitem < rightitem, idx if level == 0 else '')
                 return leftitem < rightitem
         else:
-            check = check_sides(leftitem, rightitem, idx, level=level+1)
+            check = check_sides(leftitem, rightitem, idx=idx, debug=debug, level=level+1)
             if check is not None:
                 iprint('returning', check, idx if level == 0 else '')
                 return check
@@ -108,7 +108,7 @@ def run(
     with open(file) as fp:
         input = fp.read()
 
-    print("Day 12 Part 1 - Level of Monkey Business")
+    print("Day 13 Part 1 - Sum of indicides of pairs in correct order")
     indices, result = check_packet_pairs(parse_input(input))
     print(indices)
     print(result)
