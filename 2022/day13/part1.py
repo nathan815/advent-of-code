@@ -4,7 +4,7 @@ from pprint import pprint
 import sys
 
 
-def check_sides(left, right, idx=0, debug=True, level=0):
+def check_sides(left, right, idx=0, debug=False, level=0):
     def iprint(*args):
         if debug:
             print(('  ' * level) + str(args[0]), *args[1:])
@@ -96,8 +96,8 @@ def parse_input(input: str):
 
         pairs.append(pair)
 
-    print()
-    pprint(pairs)
+    # print()
+    # pprint(pairs)
 
     return pairs
 
@@ -110,7 +110,7 @@ def run(
 
     print("Day 13 Part 1 - Sum of indicides of pairs in correct order")
     indices, result = check_packet_pairs(parse_input(input))
-    print(indices)
+    # print(indices)
     print(result)
 
     return result
