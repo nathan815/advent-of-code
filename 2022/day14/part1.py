@@ -14,9 +14,9 @@ SAND = "."
 START_SAND = "+"
 
 
-def fill_with_sand(grid: GridData, sand_start_x: int, output_file_prefix=None):
+def fill_with_sand(grid: GridData, sand_start_x: int, output_file_prefix: str = None):
     if output_file_prefix:
-        write_grid(grid, filename=f"{output_file_prefix}_0_start.txt")
+        write_grid(grid, filename=f"part1/{output_file_prefix}_0_start.txt")
 
     max_x = len(grid[0]) - 1
     max_y = len(grid) - 1
@@ -47,7 +47,7 @@ def fill_with_sand(grid: GridData, sand_start_x: int, output_file_prefix=None):
                 resting_sand_count += 1
                 if output_file_prefix:
                     write_grid(
-                        grid, filename=f"{output_file_prefix}_{resting_sand_count}.txt"
+                        grid, filename=f"part1/{output_file_prefix}_{resting_sand_count}.txt"
                     )
                 break
 
@@ -55,9 +55,13 @@ def fill_with_sand(grid: GridData, sand_start_x: int, output_file_prefix=None):
 
 
 def write_grid(
-    grid: GridData, filename="grid.txt", directory=Path(__file__).parent / "generated"
+    grid: GridData,
+    filename: str,
+    directory=Path(__file__).parent / "generated"
 ):
-    with open(directory / filename, "w") as f:
+    fullpath = directory / Path(filename)
+    fullpath.parent.mkdir(parents=True, exist_ok=True)
+    with open(fullpath, "w") as f:
         f.write("\n".join(["".join(row_chars) for row_chars in grid]))
 
 
@@ -135,9 +139,9 @@ def run(
 
     print("Day 14 Part 1 - Number of units of resting sand")
     grid, lines, sand_start_x = build_grid_from_input(input)
-    write_grid(grid, "real_start.txt")
+    write_grid(grid, Path("part1/real_start.txt"))
     answer, grid = fill_with_sand(grid, sand_start_x)
-    write_grid(grid, "real_end.txt")
+    write_grid(grid, Path("part1/real_end.txt"))
     # print(lines)
     print(answer)
 
