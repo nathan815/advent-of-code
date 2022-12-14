@@ -79,7 +79,7 @@ def play_monkey_in_the_middle(
     divisor = get_max_worry_divisor(monkeys)
     for round in range(0, rounds):
         for monkey in monkeys:
-            print("Round", round)  # , monkey.holding_items, monkey)
+            # print("Round", round)  # , monkey.holding_items, monkey)
 
             while len(monkey.holding_items) > 0:
                 monkey.inspect_item(divisor)
