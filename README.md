@@ -5,6 +5,8 @@ https://adventofcode.com/
 
 ## Set up
 
+**Prereq:** Docker
+
 ```
 cd 2022
 make build
