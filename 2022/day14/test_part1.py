@@ -1,4 +1,4 @@
-from day14.part1 import build_grid_from_input, write_grid, fill_with_sand, ROCK, AIR, SAND
+from day14.part1 import build_grid_from_input, fill_with_sand, ROCK, AIR, SAND
 
 sample_input = """
 498,4 -> 498,6 -> 496,6

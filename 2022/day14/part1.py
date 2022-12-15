@@ -3,6 +3,9 @@ from pathlib import Path
 import sys
 from typing import Tuple
 
+from day14.grid_writer import write_grid
+
+
 LineList = list[list[Tuple[int, int]]]
 GridData = list[list[str]]
 
@@ -52,17 +55,6 @@ def fill_with_sand(grid: GridData, sand_start_x: int, output_file_prefix: str = 
                 break
 
     return resting_sand_count, grid
-
-
-def write_grid(
-    grid: GridData,
-    filename: str,
-    directory=Path(__file__).parent / "generated"
-):
-    fullpath = directory / Path(filename)
-    fullpath.parent.mkdir(parents=True, exist_ok=True)
-    with open(fullpath, "w") as f:
-        f.write("\n".join(["".join(row_chars) for row_chars in grid]))
 
 
 def build_grid_from_input(input: str) -> Tuple[LineList, GridData]:
